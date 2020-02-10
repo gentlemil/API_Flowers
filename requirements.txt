@@ -23,3 +23,5 @@ traitlets==4.3.3
 wcwidth==0.1.8
 whitenoise==5.0.1
 wincertstore==0.2
+djangorestframework==3.11.0
+
