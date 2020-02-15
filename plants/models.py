@@ -22,6 +22,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
 
 # ----------------------------------------------------
 class Room(models.Model):
@@ -34,13 +38,13 @@ class Room(models.Model):
     )
 
     TEMPERATURE_CHOICE = [
-    ('cold', 'cold'),
-    ('medium', 'medium'),
-    ('warm', 'warm'),
+    (1, 'cold'),
+    (2, 'medium'),
+    (3, 'warm'),
     ]
 
     temperature = models.IntegerField(
-        max_length=10, choices=TEMPERATURE_CHOICE,
+        choices=TEMPERATURE_CHOICE,
         verbose_name='Temperature',
         blank=False, null=False,
         help_text='',
@@ -74,11 +78,16 @@ class Room(models.Model):
     )
     draft = models.BooleanField(
         blank=True, null=False,
+        default=False,
         verbose_name='',
     )
 
     def __str__(self):
         pass
+
+    class Meta:
+        verbose_name = 'Room'
+        verbose_name_plural = 'Rooms'
 
 
 
@@ -172,4 +181,8 @@ class Plant(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Plant'
+        verbose_name_plural = 'Plants'
 
