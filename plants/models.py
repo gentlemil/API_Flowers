@@ -11,6 +11,14 @@ class Category(models.Model):
         help_text='',
     )
 
+    slug = models.SlugField(
+        max_length=100,
+        blank= False, null=False, default='',
+        unique=True,
+        verbose_name='Slug name',
+        help_text='',
+        )
+
     def __str__(self):
         return self.name
 
@@ -90,8 +98,6 @@ class Plant(models.Model):
         verbose_name="Plant's category",
         help_text='',
     )
-    
-    
     room = models.ForeignKey(
         Room, on_delete=models.SET_NULL,
         default=None, null=True, blank=True,
@@ -101,12 +107,12 @@ class Plant(models.Model):
     watering_interval = models.PositiveIntegerField(
         blank= False, null=False,
         verbose_name='Watering interval',
-        help_text='In days',
+        help_text='In seconds',
     )
     fertilizing_interval = models.PositiveIntegerField(
         blank= False, null=False,
         verbose_name='Fertilizing interval',
-        help_text='In days',
+        help_text='In seconds',
     )
     required_exposure = models.CharField(
         max_length=100,
@@ -117,6 +123,14 @@ class Plant(models.Model):
         help_text='',
         choices=Room.EXPOSURE_CHOICE,
     )
+
+    required_temperature = models.CharField(
+        max_length=100,
+        default=False, blank= False, null=False,
+        verbose_name='Name',
+        help_text='',
+    )
+
     required_humidity = models.CharField(
         max_length=100,
         default=False, blank= False, null=False,
@@ -144,15 +158,15 @@ class Plant(models.Model):
         help_text='',
         )
     
-    last_watered = models.DateField(
+    last_watered = models.DateTimeField(
         default=None, null=True, blank=True,
-        verbose_name='',
+        verbose_name='Last watering timestamp',
         help_text='',
     )
 
-    last_fertilized = models.DateField(
+    last_fertilized = models.DateTimeField(
         default=None, null=True, blank=True,
-        verbose_name='',
+        verbose_name='Last watering timestamp',
         help_text='',
     )
 
