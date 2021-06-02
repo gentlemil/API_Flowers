@@ -32,7 +32,7 @@ rjsmin==1.1.0
 six==1.13.0
 sqlparse==0.3.0
 traitlets==4.3.3
-urllib3==1.25.8
+urllib3==1.26.5
 wcwidth==0.1.8
 whitenoise==5.0.1
 wincertstore==0.2
